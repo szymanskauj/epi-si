@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.wallet_list'|trans }}
+{% endblock %}
+{% block body %}
+    <h1>{{ 'title.wallet_list'|trans }}</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>{{ 'wallet.name'|trans }}</th>
+            <th>{{ 'wallet.balance'|trans }}</th>
+            <th>{{ 'wallet.created_at'|trans }}</th>
+            <th>{{ 'wallet.updated_at'|trans }}</th>
+        </tr>
+        </thead>
+        {% for wallet in wallets %}
+            <tbody>
+            <tr>
+                <td>{{ wallet.name }}</td>
+                <td>{{ wallet.balance }}</td>
+                <td>{{ wallet.createdAt.format('d/m/Y') }}</td>
+                <td>{{ wallet.updatedAt.format('d/m/Y') }}</td>
+                <td>
+                    <a href="{{ url('wallet_transactions', {'id': wallet.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_transactions'|trans }}">
+                        {{ 'action.show_transactions'|trans }}
+                    </a>
+                    <a href="{{ url('wallet_show', {'id': wallet.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show'|trans }}">
+                        {{ 'action.show'|trans }}
+                    </a>
+                    <a href="{{ url('wallet_edit', {'id': wallet.id}) }}" class="btn btn-warning btn-sm square" role="button" title="{{ 'action.edit'|trans }}">
+                        {{ 'action.edit'|trans }}
+                    </a>
+                    <a href="{{ url('wallet_delete', {'id': wallet.id}) }}" class="btn btn-danger btn-sm square" role="button" title="{{ 'action.delete'|trans }}">
+                        {{ 'action.delete'|trans }}
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+    <a href="{{ url('wallet_create') }}" class="btn btn-primary btn-lg square" role="button" title="{{ 'action.create'|trans }}">
+        {{ 'action.create'|trans }}
+    </a>
+{% endblock %}

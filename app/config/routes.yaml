@@ -1,0 +1,11 @@
+# config/routes.yaml
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+homepage:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /login
+        permanent: true

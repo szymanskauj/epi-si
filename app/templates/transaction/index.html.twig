@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.transaction_list'|trans }}
+{% endblock %}
+{% block body %}
+    <h1>{{ 'title.transaction_list'|trans }}</h1>
+    <h2>{{ 'title.balance'|trans }}</h2>
+    <h2>{{ wallet.balance }}</h2>
+    <a href="{{ url('wallet_transactions', {'id': wallet.id }) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_all'|trans }}">
+        {{ 'action.show_all'|trans }}
+    </a>
+    <a href="{{ url('wallet_transactions', {'id': wallet.id, 'days': 7}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_last_transactions'|trans({'%days%': 7}) }}">
+        {{ 'action.show_last_transactions'|trans({'%days%': 7}) }}
+    </a>
+    <a href="{{ url('wallet_transactions', {'id': wallet.id, 'days': 30}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_last_transactions'|trans({'%days%': 30}) }}">
+        {{ 'action.show_last_transactions'|trans({'%days%': 30}) }}
+    </a>
+    <a href="{{ url('wallet_transactions', {'id': wallet.id, 'days': 90}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_last_transactions'|trans({'%days%': 90}) }}">
+        {{ 'action.show_last_transactions'|trans({'%days%': 90}) }}
+    </a>
+    <a href="{{ url('wallet_transactions', {'id': wallet.id, 'days': 180}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_last_transactions'|trans({'%days%': 180}) }}">
+        {{ 'action.show_last_transactions'|trans({'%days%': 180}) }}
+    </a>
+    <table>
+        <thead>
+        <tr>
+            <th>{{ 'transaction.amount'|trans }}</th>
+            <th>{{ 'transaction.created_at'|trans }}</th>
+            <th>{{ 'transaction.updated_at'|trans }}</th>
+            <th>{{ 'transaction.category'|trans }}</th>
+        </tr>
+        </thead>
+        {% for transaction in transactions %}
+            <tbody>
+            <tr>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.createdAt.format('d/m/Y') }}</td>
+                <td>{{ transaction.updatedAt.format('d/m/Y') }}</td>
+                <td>
+                    <a href="{{ url('wallet_transactions', {'id': wallet.id, 'filters_category_id': transaction.category.id }) }}" title="{{ transaction.category.title }}">
+                        {{ transaction.category.title }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url('transaction_show', {'id': wallet.id, 'transaction_id': transaction.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show'|trans }}">
+                        {{ 'action.show'|trans }}
+                    </a>
+                    <a href="{{ url('transaction_edit', {'id': wallet.id, 'transaction_id': transaction.id}) }}" class="btn btn-warning btn-sm square" role="button" title="{{ 'action.edit'|trans }}">
+                        {{ 'action.edit'|trans }}
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+    <a href="{{ url('transaction_create', {'id': wallet.id}) }}" class="btn btn-primary btn-lg square" role="button" title="{{ 'action.create'|trans }}">
+        {{ 'action.create'|trans }}
+    </a>
+    <a href="{{ path('wallet_index') }}">
+        {{ 'action.wallets'|trans }}
+    </a>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.transaction_details'|trans({'%id%': transaction.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.transaction_details'|trans({'%id%': transaction.id|default('')}) }}</h1>
+    <dl class="dl-horizontal">
+        <dt>{{ 'label.id'|trans }}</dt>
+        <dd>{{ transaction.id }}</dd>
+        <dt>{{ 'label.amount'|trans }}</dt>
+        <dd>{{ transaction.amount }}</dd>
+        <dt>{{ 'label.category'|trans }}</dt>
+        <dd>{{  transaction.category.title }}</dd>
+    </dl>
+    <p>
+        <a href="{{ url('wallet_transactions', {'id': wallet.id}) }}" title="{{ 'action.back_to_list'|trans }}">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </p>
+{% endblock %}

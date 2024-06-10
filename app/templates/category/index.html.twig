@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.category_list'|trans }}
+{% endblock %}
+{% block body %}
+    <h1>{{ 'title.category_list'|trans }}</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>{{ 'category.title'|trans }}</th>
+            <th>{{ 'category.created_at'|trans }}</th>
+            <th>{{ 'category.updated_at'|trans }}</th>
+        </tr>
+        </thead>
+        {% for category in categories %}
+            <tbody>
+            <tr>
+                <td>{{ category.title }}</td>
+                <td>{{ category.createdAt.format('d/m/Y') }}</td>
+                <td>{{ category.updatedAt.format('d/m/Y') }}</td>
+                <td>
+                    <a href="{{ url('category_show', {'id': category.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show'|trans }}">
+                        {{ 'action.show'|trans }}
+                    </a>
+                    <a href="{{ url('category_edit', {'id': category.id}) }}" class="btn btn-warning btn-sm square" role="button" title="{{ 'action.edit'|trans }}">
+                        {{ 'action.edit'|trans }}
+                    </a>
+                    <a href="{{ url('category_delete', {'id': category.id}) }}" class="btn btn-danger btn-sm square" role="button" title="{{ 'action.delete'|trans }}">
+                        {{ 'action.delete'|trans }}
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+    <a href="{{ url('category_create') }}" class="btn btn-primary btn-lg square" role="button" title="{{ 'action.create'|trans }}">
+        {{ 'action.create'|trans }}
+    </a>
+{% endblock %}
