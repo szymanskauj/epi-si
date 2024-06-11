@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Controller;
 
@@ -68,7 +74,7 @@ class TransactionController extends AbstractController
             [
                 'transactions' => $transactions,
                 'wallet' => $wallet,
-            ]
+            ],
         );
     }
 
@@ -90,6 +96,7 @@ class TransactionController extends AbstractController
         $transaction = new Transaction();
         $transaction->setCreatedAt(new \DateTimeImmutable());
         $transaction->setUpdatedAt(new \DateTime());
+        $transaction->setWallet($wallet);
 
         $form = $this->createForm(
             TransactionType::class,
@@ -103,8 +110,8 @@ class TransactionController extends AbstractController
             return $this->redirectToRoute(
                 'wallet_transactions',
                 [
-                    'id' => $wallet->getId()
-                ]
+                    'id' => $wallet->getId(),
+                ],
             );
         }
 
@@ -112,65 +119,67 @@ class TransactionController extends AbstractController
             'transaction/create.html.twig',
             [
                 'form' => $form->createView(),
-                'wallet' => $wallet
-            ]
+                'wallet' => $wallet,
+            ],
         );
     }
 
     /**
      * Displays a specific transaction.
      *
-     * @param Wallet $wallet The wallet entity.
-     * @param int $transaction_id The transaction ID.
+     * @param Wallet $wallet        The wallet entity.
+     * @param int    $transactionId The transaction ID.
      *
      * @return Response The HTTP response with the transaction details.
      */
     #[Route(
-        '/{transaction_id}',
+        '/{transactionId}',
         name: 'transaction_show',
-        requirements: ['transaction_id' => '[1-9]\d*'],
+        requirements: ['transactionId' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    public function show(Wallet $wallet, int $transaction_id): Response
+    public function show(Wallet $wallet, int $transactionId): Response
     {
-        $transaction = $this->transactionService->findById($transaction_id);
+        $transaction = $this->transactionService->findById($transactionId);
+
         return $this->render(
             'transaction/show.html.twig',
             [
                 'transaction' => $transaction,
-                'wallet' => $wallet
-            ]
+                'wallet' => $wallet,
+            ],
         );
     }
 
     /**
      * Edits an existing transaction.
      *
-     * @param Request $request The HTTP request.
-     * @param Wallet $wallet The wallet entity.
-     * @param int $transaction_id The transaction ID.
+     * @param Request $request       The HTTP request.
+     * @param Wallet  $wallet        The wallet entity.
+     * @param int     $transactionId The transaction ID.
      *
      * @return Response The HTTP response.
      */
     #[Route(
-        '/{transaction_id}/edit',
+        '/{transactionId}/edit',
         name: 'transaction_edit',
-        requirements: ['transaction_id' => '[1-9]\d*'],
+        requirements: ['transactionId' => '[1-9]\d*'],
         methods: 'GET|PUT'
     )]
-    public function edit(Request $request, Wallet $wallet, int $transaction_id): Response
+    public function edit(Request $request, Wallet $wallet, int $transactionId): Response
     {
-        $transaction = $this->transactionService->findById($transaction_id);
+        $transaction = $this->transactionService->findById($transactionId);
         $form = $this->createForm(
             TransactionType::class,
             $transaction,
             [
                 'method' => 'PUT',
                 'action' => $this->generateUrl(
-                    'transaction_edit', [
+                    'transaction_edit',
+                    [
                         'id' => $wallet->getId(),
-                        'transaction_id' => $transaction->getId(),
-                    ]
+                        'transactionId' => $transaction->getId(),
+                    ],
                 ),
             ]
         );
@@ -182,17 +191,18 @@ class TransactionController extends AbstractController
             return $this->redirectToRoute(
                 'wallet_transactions',
                 [
-                    'id' => $wallet->getId()
-                ]
+                    'id' => $wallet->getId(),
+                ],
             );
         }
+
         return $this->render(
             'transaction/edit.html.twig',
             [
                 'form' => $form->createView(),
                 'transaction' => $transaction,
-                'wallet' => $wallet
-            ]
+                'wallet' => $wallet,
+            ],
         );
     }
 
@@ -200,7 +210,7 @@ class TransactionController extends AbstractController
      * Handles the transaction, updating the wallet and saving the transaction.
      *
      * @param Transaction $transaction The transaction entity.
-     * @param Wallet $wallet The wallet entity.
+     * @param Wallet      $wallet      The wallet entity.
      */
     private function handleTransaction(Transaction $transaction, Wallet $wallet): void
     {

@@ -39,8 +39,10 @@ class UserEmailType extends AbstractType
             [
                 'label' => 'label.email',
                 'required' => true,
-                'attr' => ['max_length' => 255],
-            ]
+                'attr' => [
+                    'max_length' => 255,
+                ],
+            ],
         );
     }
 

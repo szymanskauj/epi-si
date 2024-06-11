@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\DataFixtures;
 

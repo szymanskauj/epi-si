@@ -1,11 +1,19 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Entity;
 
 use App\Repository\TransactionRepository;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Transaction entity class.
@@ -34,6 +42,8 @@ class Transaction
      * @var string|null
      */
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Assert\NotBlank]
+    #[Assert\Range(min: -99999, max: 99999)]
     private ?string $amount = null;
 
     /**
@@ -42,6 +52,8 @@ class Transaction
      * @var \DateTimeImmutable|null
      */
     #[ORM\Column]
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\NotBlank]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
@@ -50,14 +62,20 @@ class Transaction
      * @var \DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\NotBlank]
     private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\ManyToOne(targetEntity: Wallet::class)]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(Wallet::class)]
     private ?Wallet $wallet = null;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(Category::class)]
     private ?Category $category = null;
 
     /**

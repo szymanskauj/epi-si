@@ -39,8 +39,10 @@ class UserPasswordType extends AbstractType
             [
                 'label' => 'label.password',
                 'required' => true,
-                'attr' => ['max_length' => 255],
-            ]
+                'attr' => [
+                    'max_length' => 255,
+                ],
+            ],
         );
     }
 

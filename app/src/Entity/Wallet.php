@@ -1,14 +1,19 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Entity;
 
 use App\Repository\WalletRepository;
 use DateTimeImmutable;
 use DateTimeInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Wallet.
@@ -33,6 +38,9 @@ class Wallet
      * @var string|null
      */
     #[ORM\Column(length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $name = null;
 
     /**
@@ -41,6 +49,8 @@ class Wallet
      * @var DateTimeImmutable|null
      */
     #[ORM\Column]
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\NotBlank]
     private ?DateTimeImmutable $createdAt = null;
 
     /**
@@ -49,6 +59,8 @@ class Wallet
      * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\NotBlank]
     private ?DateTimeInterface $updatedAt = null;
 
     /**
@@ -57,6 +69,8 @@ class Wallet
      * @var string|null
      */
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Assert\NotBlank]
+    #[Assert\Range(min: 0, max: 99999)]
     private ?string $balance = null;
 
     /**

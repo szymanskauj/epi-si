@@ -19,8 +19,8 @@
             <tr>
                 <td>{{ wallet.name }}</td>
                 <td>{{ wallet.balance }}</td>
-                <td>{{ wallet.createdAt.format('d/m/Y') }}</td>
-                <td>{{ wallet.updatedAt.format('d/m/Y') }}</td>
+                <td>{{ wallet.createdAt|format_date('long') }}</td>
+                <td>{{ wallet.updatedAt|format_date('long') }}</td>
                 <td>
                     <a href="{{ url('wallet_transactions', {'id': wallet.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show_transactions'|trans }}">
                         {{ 'action.show_transactions'|trans }}

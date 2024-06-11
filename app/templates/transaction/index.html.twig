@@ -35,18 +35,18 @@
             <tbody>
             <tr>
                 <td>{{ transaction.amount }}</td>
-                <td>{{ transaction.createdAt.format('d/m/Y') }}</td>
-                <td>{{ transaction.updatedAt.format('d/m/Y') }}</td>
+                <td>{{ transaction.createdAt|format_date('long') }}</td>
+                <td>{{ transaction.updatedAt|format_date('long') }}</td>
                 <td>
                     <a href="{{ url('wallet_transactions', {'id': wallet.id, 'filters_category_id': transaction.category.id }) }}" title="{{ transaction.category.title }}">
                         {{ transaction.category.title }}
                     </a>
                 </td>
                 <td>
-                    <a href="{{ url('transaction_show', {'id': wallet.id, 'transaction_id': transaction.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show'|trans }}">
+                    <a href="{{ url('transaction_show', {'id': wallet.id, 'transactionId': transaction.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show'|trans }}">
                         {{ 'action.show'|trans }}
                     </a>
-                    <a href="{{ url('transaction_edit', {'id': wallet.id, 'transaction_id': transaction.id}) }}" class="btn btn-warning btn-sm square" role="button" title="{{ 'action.edit'|trans }}">
+                    <a href="{{ url('transaction_edit', {'id': wallet.id, 'transactionId': transaction.id}) }}" class="btn btn-warning btn-sm square" role="button" title="{{ 'action.edit'|trans }}">
                         {{ 'action.edit'|trans }}
                     </a>
                 </td>

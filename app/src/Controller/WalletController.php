@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Controller;
 
@@ -62,8 +68,8 @@ class WalletController extends AbstractController
         return $this->render(
             'wallet/index.html.twig',
             [
-                'wallets' => $wallets
-            ]
+                'wallets' => $wallets,
+            ],
         );
     }
 
@@ -71,6 +77,7 @@ class WalletController extends AbstractController
      * Create a new wallet.
      *
      * @param Request $request The HTTP request.
+     *
      * @return Response The response.
      */
     #[Route(
@@ -104,8 +111,8 @@ class WalletController extends AbstractController
         return $this->render(
             'wallet/create.html.twig',
             [
-                'form' => $form->createView()
-            ]
+                'form' => $form->createView(),
+            ],
         );
     }
 
@@ -113,21 +120,23 @@ class WalletController extends AbstractController
      * Show details of a specific wallet.
      *
      * @param Wallet $wallet The wallet entity.
+     *
      * @return Response The response.
      */
     #[Route(
         '/{id}',
         name: 'wallet_show',
         requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET')
+        methods: 'GET'
+    )
     ]
     public function show(Wallet $wallet): Response
     {
         return $this->render(
             'wallet/show.html.twig',
             [
-                'wallet' => $wallet
-            ]
+                'wallet' => $wallet,
+            ],
         );
     }
 
@@ -135,7 +144,8 @@ class WalletController extends AbstractController
      * Edit a wallet.
      *
      * @param Request $request The HTTP request.
-     * @param Wallet $wallet The wallet entity.
+     * @param Wallet  $wallet  The wallet entity.
+     *
      * @return Response The response.
      */
     #[Route(
@@ -154,8 +164,8 @@ class WalletController extends AbstractController
                 'action' => $this->generateUrl(
                     'wallet_edit',
                     [
-                        'id' => $wallet->getId()
-                    ]
+                        'id' => $wallet->getId(),
+                    ],
                 ),
             ]
         );
@@ -178,7 +188,7 @@ class WalletController extends AbstractController
             [
                 'form' => $form->createView(),
                 'wallet' => $wallet,
-            ]
+            ],
         );
     }
 
@@ -186,7 +196,8 @@ class WalletController extends AbstractController
      * Delete a wallet.
      *
      * @param Request $request The HTTP request.
-     * @param Wallet $wallet The wallet entity.
+     * @param Wallet  $wallet  The wallet entity.
+     *
      * @return Response The response.
      */
     #[Route(
@@ -205,8 +216,8 @@ class WalletController extends AbstractController
                 'action' => $this->generateUrl(
                     'wallet_delete',
                     [
-                        'id' => $wallet->getId()
-                    ]
+                        'id' => $wallet->getId(),
+                    ],
                 ),
             ]
         );
@@ -227,7 +238,7 @@ class WalletController extends AbstractController
             [
                 'form' => $form->createView(),
                 'wallet' => $wallet,
-            ]
+            ],
         );
     }
 }

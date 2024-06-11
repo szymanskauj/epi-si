@@ -17,8 +17,8 @@
             <tbody>
             <tr>
                 <td>{{ category.title }}</td>
-                <td>{{ category.createdAt.format('d/m/Y') }}</td>
-                <td>{{ category.updatedAt.format('d/m/Y') }}</td>
+                <td>{{ category.createdAt|format_date('long') }}</td>
+                <td>{{ category.updatedAt|format_date('long') }}</td>
                 <td>
                     <a href="{{ url('category_show', {'id': category.id}) }}" class="btn btn-info btn-sm square" role="button" title="{{ 'action.show'|trans }}">
                         {{ 'action.show'|trans }}

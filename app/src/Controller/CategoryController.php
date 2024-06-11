@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Controller;
 
@@ -60,8 +66,8 @@ class CategoryController extends AbstractController
         return $this->render(
             'category/index.html.twig',
             [
-                'categories' => $categories
-            ]
+                'categories' => $categories,
+            ],
         );
     }
 
@@ -103,8 +109,8 @@ class CategoryController extends AbstractController
         return $this->render(
             'category/create.html.twig',
             [
-                'form' => $form->createView()
-            ]
+                'form' => $form->createView(),
+            ],
         );
     }
 
@@ -119,22 +125,23 @@ class CategoryController extends AbstractController
         '/{id}',
         name: 'category_show',
         requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET')
+        methods: 'GET'
+    )
     ]
     public function show(Category $category): Response
     {
         return $this->render(
             'category/show.html.twig',
             [
-                'category' => $category
-            ]
+                'category' => $category,
+            ],
         );
     }
 
     /**
      * Edit action.
      *
-     * @param Request $request The HTTP request
+     * @param Request  $request  The HTTP request
      * @param Category $category The category entity
      *
      * @return Response
@@ -153,7 +160,7 @@ class CategoryController extends AbstractController
             [
                 'method' => 'PUT',
                 'action' => $this->generateUrl('category_edit', ['id' => $category->getId()]),
-            ]
+            ],
         );
         $form->handleRequest($request);
 
@@ -174,7 +181,7 @@ class CategoryController extends AbstractController
             [
                 'form' => $form->createView(),
                 'category' => $category,
-            ]
+            ],
         );
     }
 
@@ -211,10 +218,10 @@ class CategoryController extends AbstractController
                 'action' => $this->generateUrl(
                     'category_delete',
                     [
-                        'id' => $category->getId()
-                    ]
+                        'id' => $category->getId(),
+                    ],
                 ),
-            ]
+            ],
         );
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -233,7 +240,7 @@ class CategoryController extends AbstractController
             [
                 'form' => $form->createView(),
                 'category' => $category,
-            ]
+            ],
         );
     }
 }

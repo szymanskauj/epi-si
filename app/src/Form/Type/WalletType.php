@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Form\Type;
 
@@ -33,8 +39,10 @@ class WalletType extends AbstractType
             [
                 'label' => 'label.name',
                 'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
+                'attr' => [
+                    'max_length' => 64,
+                ],
+            ],
         );
 
         $builder->add(
@@ -43,8 +51,10 @@ class WalletType extends AbstractType
             [
                 'label' => 'label.balance',
                 'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
+                'attr' => [
+                    'max_length' => 64,
+                ],
+            ],
         );
     }
 

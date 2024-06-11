@@ -1,4 +1,10 @@
 <?php
+/**
+ * This file is part of the Wallet project.
+ *
+ * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
+ */
 
 namespace App\Entity;
 
@@ -7,6 +13,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category entity class.
@@ -35,6 +42,8 @@ class Category
      * @var DateTimeImmutable|null
      */
     #[ORM\Column]
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\NotBlank]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
@@ -43,6 +52,8 @@ class Category
      * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\NotBlank]
     private ?DateTimeInterface $updatedAt = null;
 
     /**
@@ -51,6 +62,9 @@ class Category
      * @var string|null
      */
     #[ORM\Column(length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $title = null;
 
     /**
