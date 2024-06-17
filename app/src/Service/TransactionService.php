@@ -3,6 +3,7 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\Service;
@@ -28,6 +29,9 @@ class TransactionService implements TransactionServiceInterface
 
     /**
      * Constructor.
+     *
+     * @param TransactionRepository    $transactionRepository
+     * @param CategoryServiceInterface $categoryService
      */
     public function __construct(TransactionRepository $transactionRepository, CategoryServiceInterface $categoryService)
     {
@@ -37,6 +41,12 @@ class TransactionService implements TransactionServiceInterface
 
     /**
      * Find transactions by wallet.
+     *
+     * @param Wallet $wallet
+     * @param int    $categoryId
+     * @param int    $days
+     *
+     * @return array
      */
     public function findByWallet(Wallet $wallet, int $categoryId, int $days): array
     {
@@ -54,6 +64,10 @@ class TransactionService implements TransactionServiceInterface
 
     /**
      * Find transaction by ID.
+     *
+     * @param int $id
+     *
+     * @return Transaction|null
      */
     public function findById(int $id): ?Transaction
     {
@@ -62,6 +76,8 @@ class TransactionService implements TransactionServiceInterface
 
     /**
      * Save a transaction.
+     *
+     * @param Transaction $transaction
      */
     public function save(Transaction $transaction): void
     {
@@ -70,6 +86,8 @@ class TransactionService implements TransactionServiceInterface
 
     /**
      * Delete a transaction.
+     *
+     * @param Transaction $transaction
      */
     public function delete(Transaction $transaction): void
     {

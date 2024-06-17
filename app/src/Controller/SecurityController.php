@@ -3,6 +3,7 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\Controller;
@@ -20,9 +21,9 @@ class SecurityController extends AbstractController
     /**
      * Handles the login process.
      *
-     * @param AuthenticationUtils $authenticationUtils utilizes helper functions for authentication
+     * @param AuthenticationUtils $authenticationUtils Utilizes helper functions for authentication.
      *
-     * @return Response the HTTP response with the login page rendered
+     * @return Response The HTTP response with the login page rendered.
      */
     #[Route(
         path: '/login',
@@ -44,7 +45,9 @@ class SecurityController extends AbstractController
     /**
      * Handles the logout process.
      *
-     * @throws \LogicException this method can be blank as it is intercepted by the logout key on the firewall
+     * @return void
+     *
+     * @throws \LogicException This method can be blank as it is intercepted by the logout key on the firewall.
      */
     #[Route(
         path: '/logout',

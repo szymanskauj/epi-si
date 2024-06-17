@@ -3,18 +3,20 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\DataFixtures;
 
+use AllowDynamicProperties;
 use App\Entity\Category;
 
 /**
- * Class CategoryFixtures.
+ * Class CategoryFixtures
  *
  * This class is responsible for loading category data fixtures into the database.
  */
-#[\AllowDynamicProperties] class CategoryFixtures extends AbstractBaseFixtures
+#[AllowDynamicProperties] class CategoryFixtures extends AbstractBaseFixtures
 {
     /**
      * Load category data fixtures.

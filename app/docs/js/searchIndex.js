@@ -233,7 +233,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\DataFixtures\\AppFixtures",
             "name": "AppFixtures",
-            "summary": "Class\u0020AppFixtures.",
+            "summary": "Class\u0020AppFixtures",
             "url": "classes/App-DataFixtures-AppFixtures.html"
         },                {
             "fqsen": "\\App\\DataFixtures\\AppFixtures\u003A\u003Aload\u0028\u0029",
@@ -243,7 +243,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\DataFixtures\\CategoryFixtures",
             "name": "CategoryFixtures",
-            "summary": "Class\u0020CategoryFixtures.",
+            "summary": "Class\u0020CategoryFixtures",
             "url": "classes/App-DataFixtures-CategoryFixtures.html"
         },                {
             "fqsen": "\\App\\DataFixtures\\CategoryFixtures\u003A\u003AloadData\u0028\u0029",
@@ -253,7 +253,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\DataFixtures\\UserFixtures",
             "name": "UserFixtures",
-            "summary": "Class\u0020UserFixtures.",
+            "summary": "Class\u0020UserFixtures",
             "url": "classes/App-DataFixtures-UserFixtures.html"
         },                {
             "fqsen": "\\App\\DataFixtures\\UserFixtures\u003A\u003A__construct\u0028\u0029",
@@ -273,7 +273,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\DataFixtures\\WalletFixtures",
             "name": "WalletFixtures",
-            "summary": "Class\u0020WalletFixtures.",
+            "summary": "Class\u0020WalletFixtures",
             "url": "classes/App-DataFixtures-WalletFixtures.html"
         },                {
             "fqsen": "\\App\\DataFixtures\\WalletFixtures\u003A\u003AgetDependencies\u0028\u0029",
@@ -1108,7 +1108,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Service\\WalletServiceInterface",
             "name": "WalletServiceInterface",
-            "summary": "Wallet\u0020service\u0020interface.",
+            "summary": "Wallet\u0020service\u0020interface",
             "url": "classes/App-Service-WalletServiceInterface.html"
         },                {
             "fqsen": "\\App\\Service\\WalletServiceInterface\u003A\u003AgetWallets\u0028\u0029",

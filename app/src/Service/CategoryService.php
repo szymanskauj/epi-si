@@ -3,6 +3,7 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\Service;
@@ -40,6 +41,7 @@ class CategoryService implements CategoryServiceInterface
 
     /**
      * Get all categories.
+     * @return array
      */
     public function getCategories(): array
     {
@@ -48,6 +50,7 @@ class CategoryService implements CategoryServiceInterface
 
     /**
      * Save a category.
+     * @param Category $category
      */
     public function save(Category $category): void
     {
@@ -56,6 +59,7 @@ class CategoryService implements CategoryServiceInterface
 
     /**
      * Delete a category.
+     * @param Category $category
      */
     public function delete(Category $category): void
     {
@@ -64,6 +68,9 @@ class CategoryService implements CategoryServiceInterface
 
     /**
      * Check if it's possible to delete a category.
+     * @param Category $category
+     *
+     * @return bool
      */
     public function canDelete(Category $category): bool
     {
@@ -72,6 +79,9 @@ class CategoryService implements CategoryServiceInterface
 
     /**
      * Find a category.
+     * @param int $id
+     *
+     * @return Category|null
      */
     public function findById(int $id): ?Category
     {

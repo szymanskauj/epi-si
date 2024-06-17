@@ -3,6 +3,7 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\DataFixtures;
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Class UserFixtures.
+ * Class UserFixtures
  *
  * Loads user data fixtures into the database.
  */
@@ -23,7 +24,7 @@ class UserFixtures extends Fixture
     /**
      * UserFixtures constructor and password hasher service.
      *
-     * @param UserPasswordHasherInterface $passwordHasher the password hasher service
+     * @param UserPasswordHasherInterface $passwordHasher The password hasher service.
      */
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
     {
@@ -32,7 +33,7 @@ class UserFixtures extends Fixture
     /**
      * Load user data fixtures.
      *
-     * @param ObjectManager $manager the object manager
+     * @param ObjectManager $manager The object manager.
      */
     public function load(ObjectManager $manager): void
     {

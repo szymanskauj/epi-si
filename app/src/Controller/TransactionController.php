@@ -3,6 +3,7 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\Controller;
@@ -41,8 +42,8 @@ class TransactionController extends AbstractController
     /**
      * TransactionController constructor.
      *
-     * @param TransactionServiceInterface $transactionService the transaction service
-     * @param TranslatorInterface         $translator         the translator
+     * @param TransactionServiceInterface $transactionService The transaction service.
+     * @param TranslatorInterface         $translator         The translator.
      */
     public function __construct(TransactionServiceInterface $transactionService, TranslatorInterface $translator)
     {
@@ -53,10 +54,10 @@ class TransactionController extends AbstractController
     /**
      * Lists all transactions for a given wallet.
      *
-     * @param Request $request the HTTP request
-     * @param Wallet  $wallet  the wallet entity
+     * @param Request $request The HTTP request.
+     * @param Wallet  $wallet  The wallet entity.
      *
-     * @return Response the HTTP response with the transactions list
+     * @return Response The HTTP response with the transactions list.
      */
     #[Route(
         name: 'wallet_transactions',
@@ -80,10 +81,10 @@ class TransactionController extends AbstractController
     /**
      * Creates a new transaction for a given wallet.
      *
-     * @param Request $request the HTTP request
-     * @param Wallet  $wallet  the wallet entity
+     * @param Request $request The HTTP request.
+     * @param Wallet  $wallet  The wallet entity.
      *
-     * @return Response the HTTP response
+     * @return Response The HTTP response.
      */
     #[Route(
         '/create',
@@ -126,10 +127,10 @@ class TransactionController extends AbstractController
     /**
      * Displays a specific transaction.
      *
-     * @param Wallet $wallet        the wallet entity
-     * @param int    $transactionId the transaction ID
+     * @param Wallet $wallet        The wallet entity.
+     * @param int    $transactionId The transaction ID.
      *
-     * @return Response the HTTP response with the transaction details
+     * @return Response The HTTP response with the transaction details.
      */
     #[Route(
         '/{transactionId}',
@@ -153,11 +154,11 @@ class TransactionController extends AbstractController
     /**
      * Edits an existing transaction.
      *
-     * @param Request $request       the HTTP request
-     * @param Wallet  $wallet        the wallet entity
-     * @param int     $transactionId the transaction ID
+     * @param Request $request       The HTTP request.
+     * @param Wallet  $wallet        The wallet entity.
+     * @param int     $transactionId The transaction ID.
      *
-     * @return Response the HTTP response
+     * @return Response The HTTP response.
      */
     #[Route(
         '/{transactionId}/edit',
@@ -208,8 +209,8 @@ class TransactionController extends AbstractController
     /**
      * Handles the transaction, updating the wallet and saving the transaction.
      *
-     * @param Transaction $transaction the transaction entity
-     * @param Wallet      $wallet      the wallet entity
+     * @param Transaction $transaction The transaction entity.
+     * @param Wallet      $wallet      The wallet entity.
      */
     private function handleTransaction(Transaction $transaction, Wallet $wallet): void
     {

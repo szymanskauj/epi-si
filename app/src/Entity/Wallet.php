@@ -3,11 +3,14 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\Entity;
 
 use App\Repository\WalletRepository;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -21,6 +24,8 @@ class Wallet
 {
     /**
      * Primary key.
+     *
+     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,6 +34,8 @@ class Wallet
 
     /**
      * Name.
+     *
+     * @var string|null
      */
     #[ORM\Column(length: 255)]
     #[Assert\Type('string')]
@@ -38,22 +45,28 @@ class Wallet
 
     /**
      * Created At.
+     *
+     * @var DateTimeImmutable|null
      */
     #[ORM\Column]
-    #[Assert\Type(\DateTimeImmutable::class)]
+    #[Assert\Type(DateTimeImmutable::class)]
     #[Assert\NotBlank]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?DateTimeImmutable $createdAt = null;
 
     /**
      * Updated At.
+     *
+     * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\Type(\DateTimeInterface::class)]
+    #[Assert\Type(DateTimeInterface::class)]
     #[Assert\NotBlank]
-    private ?\DateTimeInterface $updatedAt = null;
+    private ?DateTimeInterface $updatedAt = null;
 
     /**
      * Balance.
+     *
+     * @var string|null
      */
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     #[Assert\NotBlank]
@@ -84,6 +97,8 @@ class Wallet
      * Setter for name.
      *
      * @param string $name Name
+     *
+     * @return static
      */
     public function setName(string $name): static
     {
@@ -94,8 +109,10 @@ class Wallet
 
     /**
      * Getter for createdAt.
+     *
+     * @return DateTimeImmutable|null
      */
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -103,9 +120,11 @@ class Wallet
     /**
      * Setter for createdAt.
      *
-     * @param \DateTimeImmutable $createdAt Created At
+     * @param DateTimeImmutable $createdAt Created At
+     *
+     * @return static
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
 
@@ -115,9 +134,9 @@ class Wallet
     /**
      * Getter for updatedAt.
      *
-     * @return \DateTimeInterface|null Updated At
+     * @return DateTimeInterface|null Updated At
      */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -125,9 +144,11 @@ class Wallet
     /**
      * Setter for updatedAt.
      *
-     * @param \DateTimeInterface $updatedAt Updated At
+     * @param DateTimeInterface $updatedAt Updated At
+     *
+     * @return static
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
@@ -148,6 +169,8 @@ class Wallet
      * Setter for balance.
      *
      * @param string $balance Balance
+     *
+     * @return static
      */
     public function setBalance(string $balance): static
     {

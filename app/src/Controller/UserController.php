@@ -3,6 +3,7 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
+ *
  */
 
 namespace App\Controller;
@@ -43,7 +44,7 @@ class UserController extends AbstractController
      * Constructor.
      *
      * @param UserServiceInterface $userService User service
-     * @param TranslatorInterface  $translator  the translator
+     * @param TranslatorInterface  $translator  The translator.
      */
     public function __construct(UserServiceInterface $userService, TranslatorInterface $translator)
     {
@@ -54,7 +55,7 @@ class UserController extends AbstractController
     /**
      * Render the user edit page.
      *
-     * @return Response the HTTP response
+     * @return Response The HTTP response.
      */
     #[Route(
         '/edit',
@@ -68,10 +69,10 @@ class UserController extends AbstractController
     /**
      * Change user's email.
      *
-     * @param Request                $request       the HTTP request
-     * @param EntityManagerInterface $entityManager the entity manager
+     * @param Request                $request       The HTTP request.
+     * @param EntityManagerInterface $entityManager The entity manager.
      *
-     * @return Response the HTTP response
+     * @return Response The HTTP response.
      */
     #[Route(
         '/change-email',
@@ -118,10 +119,10 @@ class UserController extends AbstractController
     /**
      * Change user's password.
      *
-     * @param Request                $request       the HTTP request
-     * @param EntityManagerInterface $entityManager the entity manager
+     * @param Request                $request       The HTTP request.
+     * @param EntityManagerInterface $entityManager The entity manager.
      *
-     * @return Response the HTTP response
+     * @return Response The HTTP response.
      */
     #[Route(
         '/change-password',
