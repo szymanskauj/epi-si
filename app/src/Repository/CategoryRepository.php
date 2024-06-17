@@ -3,7 +3,6 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Repository;
@@ -66,10 +65,6 @@ class CategoryRepository extends ServiceEntityRepository
 
     /**
      * Find entity by id.
-     *
-     * @param int $id
-     *
-     * @return Category|null
      */
     public function findById(int $id): ?Category
     {

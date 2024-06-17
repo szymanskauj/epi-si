@@ -3,14 +3,11 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
-use DateTimeImmutable;
-use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -19,17 +16,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Category entity class.
  *
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ *
  * @ORM\Table(name="categories")
  */
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
 class Category
 {
-
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -38,28 +33,22 @@ class Category
 
     /**
      * Created At.
-     *
-     * @var DateTimeImmutable|null
      */
     #[ORM\Column]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(\DateTimeImmutable::class)]
     #[Assert\NotBlank]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * Updated At.
-     *
-     * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\Type(\DateTimeInterface::class)]
     #[Assert\NotBlank]
-    private ?DateTimeInterface $updatedAt = null;
+    private ?\DateTimeInterface $updatedAt = null;
 
     /**
      * Title.
-     *
-     * @var string|null
      */
     #[ORM\Column(length: 255)]
     #[Assert\Type('string')]
@@ -79,8 +68,6 @@ class Category
 
     /**
      * Getter for createdAt.
-     *
-     * @return DateTimeImmutable|null
      */
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -90,9 +77,7 @@ class Category
     /**
      * Setter for createdAt.
      *
-     * @param DateTimeImmutable $createdAt Created At
-     *
-     * @return static
+     * @param \DateTimeImmutable $createdAt Created At
      */
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
@@ -104,9 +89,9 @@ class Category
     /**
      * Getter for updatedAt.
      *
-     * @return DateTimeInterface|null Updated At
+     * @return \DateTimeInterface|null Updated At
      */
-    public function getUpdatedAt(): ?DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -114,11 +99,9 @@ class Category
     /**
      * Setter for updatedAt.
      *
-     * @param DateTimeInterface $updatedAt Updated At
-     *
-     * @return static
+     * @param \DateTimeInterface $updatedAt Updated At
      */
-    public function setUpdatedAt(DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
@@ -139,8 +122,6 @@ class Category
      * Setter for title.
      *
      * @param string $title Title
-     *
-     * @return static
      */
     public function setTitle(string $title): static
     {
