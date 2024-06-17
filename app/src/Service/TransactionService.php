@@ -3,7 +3,6 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Service;
@@ -30,8 +29,8 @@ class TransactionService implements TransactionServiceInterface
     /**
      * Constructor.
      *
-     * @param TransactionRepository    $transactionRepository
-     * @param CategoryServiceInterface $categoryService
+     * @param TransactionRepository    $transactionRepository TransactionRepository
+     * @param CategoryServiceInterface $categoryService       CategoryServiceInterface
      */
     public function __construct(TransactionRepository $transactionRepository, CategoryServiceInterface $categoryService)
     {
@@ -42,11 +41,11 @@ class TransactionService implements TransactionServiceInterface
     /**
      * Find transactions by wallet.
      *
-     * @param Wallet $wallet
-     * @param int    $categoryId
-     * @param int    $days
+     * @param Wallet $wallet     Wallet
+     * @param int    $categoryId Category Id
+     * @param int    $days       Days
      *
-     * @return array
+     * @return array transactions list
      */
     public function findByWallet(Wallet $wallet, int $categoryId, int $days): array
     {
@@ -65,9 +64,9 @@ class TransactionService implements TransactionServiceInterface
     /**
      * Find transaction by ID.
      *
-     * @param int $id
+     * @param int $id id
      *
-     * @return Transaction|null
+     * @return Transaction|null Transaction
      */
     public function findById(int $id): ?Transaction
     {
@@ -77,7 +76,7 @@ class TransactionService implements TransactionServiceInterface
     /**
      * Save a transaction.
      *
-     * @param Transaction $transaction
+     * @param Transaction $transaction Transaction
      */
     public function save(Transaction $transaction): void
     {
@@ -87,7 +86,7 @@ class TransactionService implements TransactionServiceInterface
     /**
      * Delete a transaction.
      *
-     * @param Transaction $transaction
+     * @param Transaction $transaction Transaction
      */
     public function delete(Transaction $transaction): void
     {

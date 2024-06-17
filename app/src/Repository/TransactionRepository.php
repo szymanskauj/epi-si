@@ -3,7 +3,6 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Repository;
@@ -54,7 +53,7 @@ class TransactionRepository extends ServiceEntityRepository
      * Finds transactions by wallet.
      *
      * @param Wallet   $wallet   The wallet entity
-     * @param Category $category
+     * @param Category $category Category
      *
      * @return array The list of transactions
      */

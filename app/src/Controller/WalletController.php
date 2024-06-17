@@ -3,7 +3,6 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Controller;
@@ -43,8 +42,8 @@ class WalletController extends AbstractController
     /**
      * WalletController constructor.
      *
-     * @param WalletServiceInterface $walletService The wallet service.
-     * @param TranslatorInterface    $translator    The translator.
+     * @param WalletServiceInterface $walletService the wallet service
+     * @param TranslatorInterface    $translator    the translator
      */
     public function __construct(WalletServiceInterface $walletService, TranslatorInterface $translator)
     {
@@ -55,7 +54,7 @@ class WalletController extends AbstractController
     /**
      * Display a list of wallets.
      *
-     * @return Response The response.
+     * @return Response the response
      */
     #[Route(
         name: 'wallet_index',
@@ -76,9 +75,9 @@ class WalletController extends AbstractController
     /**
      * Create a new wallet.
      *
-     * @param Request $request The HTTP request.
+     * @param Request $request the HTTP request
      *
-     * @return Response The response.
+     * @return Response the response
      */
     #[Route(
         '/create',
@@ -119,9 +118,9 @@ class WalletController extends AbstractController
     /**
      * Show details of a specific wallet.
      *
-     * @param Wallet $wallet The wallet entity.
+     * @param Wallet $wallet the wallet entity
      *
-     * @return Response The response.
+     * @return Response the response
      */
     #[Route(
         '/{id}',
@@ -143,10 +142,10 @@ class WalletController extends AbstractController
     /**
      * Edit a wallet.
      *
-     * @param Request $request The HTTP request.
-     * @param Wallet  $wallet  The wallet entity.
+     * @param Request $request the HTTP request
+     * @param Wallet  $wallet  the wallet entity
      *
-     * @return Response The response.
+     * @return Response the response
      */
     #[Route(
         '/{id}/edit',
@@ -195,10 +194,10 @@ class WalletController extends AbstractController
     /**
      * Delete a wallet.
      *
-     * @param Request $request The HTTP request.
-     * @param Wallet  $wallet  The wallet entity.
+     * @param Request $request the HTTP request
+     * @param Wallet  $wallet  the wallet entity
      *
-     * @return Response The response.
+     * @return Response the response
      */
     #[Route(
         '/{id}/delete',

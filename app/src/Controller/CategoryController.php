@@ -3,7 +3,6 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Controller;
@@ -41,8 +40,8 @@ class CategoryController extends AbstractController
     /**
      * Constructor.
      *
-     * @param CategoryServiceInterface $categoryService The category service.
-     * @param TranslatorInterface      $translator      The translator.
+     * @param CategoryServiceInterface $categoryService the category service
+     * @param TranslatorInterface      $translator      the translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -53,7 +52,7 @@ class CategoryController extends AbstractController
     /**
      * Index action.
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route(
         name: 'category_index',
@@ -76,7 +75,7 @@ class CategoryController extends AbstractController
      *
      * @param Request $request The HTTP request
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route(
         '/create',
@@ -119,7 +118,7 @@ class CategoryController extends AbstractController
      *
      * @param Category $category The category entity
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}',
@@ -144,7 +143,7 @@ class CategoryController extends AbstractController
      * @param Request  $request  The HTTP request
      * @param Category $category The category entity
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}/edit',
@@ -191,7 +190,7 @@ class CategoryController extends AbstractController
      * @param Request  $request  The HTTP request
      * @param Category $category The category entity
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}/delete',

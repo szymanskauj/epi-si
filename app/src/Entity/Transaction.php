@@ -3,14 +3,11 @@
  * This file is part of the Wallet project.
  *
  * (c) Martyna Szymańska martyna.81.szymanska@student.uj.edu.pl
- *
  */
 
 namespace App\Entity;
 
 use App\Repository\TransactionRepository;
-use DateTimeImmutable;
-use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -19,17 +16,17 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Transaction entity class.
  *
  * @ORM\Entity(repositoryClass=TransactionRepository::class)
+ *
  * @ORM\Table(name="transactions")
  */
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]
 #[ORM\Table(name: 'transactions')]
 class Transaction
 {
-
     /**
      * Primary key.
      *
-     * @var int|null
+     * @var int|null Primary key
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -38,8 +35,6 @@ class Transaction
 
     /**
      * Amount.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     #[Assert\NotBlank]
@@ -49,20 +44,18 @@ class Transaction
     /**
      * Created At.
      *
-     * @var \DateTimeImmutable|null
+     * @var \DateTimeImmutable|null Created At
      */
     #[ORM\Column]
-    #[Assert\Type(DateTimeImmutable::class)]
+    #[Assert\Type(\DateTimeImmutable::class)]
     #[Assert\NotBlank]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * Updated At.
-     *
-     * @var \DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\Type(DateTimeInterface::class)]
+    #[Assert\Type(\DateTimeInterface::class)]
     #[Assert\NotBlank]
     private ?\DateTimeInterface $updatedAt = null;
 
@@ -102,20 +95,16 @@ class Transaction
      * Setter for amount.
      *
      * @param string $amount Amount
-     *
-     * @return static
      */
-    public function setAmount(string $amount): static
+    public function setAmount(string $amount): void
     {
         $this->amount = $amount;
-
-        return $this;
     }
 
     /**
      * Getter for createdAt.
      *
-     * @return DateTimeImmutable|null
+     * @return DateTimeImmutable|null Created At
      */
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -125,15 +114,11 @@ class Transaction
     /**
      * Setter for createdAt.
      *
-     * @param DateTimeImmutable $createdAt Created At
-     *
-     * @return static
+     * @param \DateTimeImmutable $createdAt Created At
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     /**
@@ -150,14 +135,10 @@ class Transaction
      * Setter for updatedAt.
      *
      * @param \DateTimeInterface $updatedAt Updated At
-     *
-     * @return static
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 
     /**
@@ -174,14 +155,10 @@ class Transaction
      * Setter for wallet.
      *
      * @param Wallet|null $wallet Wallet
-     *
-     * @return static
      */
-    public function setWallet(?Wallet $wallet): static
+    public function setWallet(?Wallet $wallet): void
     {
         $this->wallet = $wallet;
-
-        return $this;
     }
 
     /**
@@ -198,13 +175,9 @@ class Transaction
      * Setter for category.
      *
      * @param Category|null $category Category
-     *
-     * @return static
      */
-    public function setCategory(?Category $category): static
+    public function setCategory(?Category $category): void
     {
         $this->category = $category;
-
-        return $this;
     }
 }
